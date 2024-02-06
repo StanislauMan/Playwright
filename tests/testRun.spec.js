@@ -5,5 +5,4 @@ test('Home page test', async ({ page }) => {
 
     await expect(page).toHaveTitle('STORE')
     await expect(page).toHaveURL('https://www.demoblaze.com/')
-    
 })
