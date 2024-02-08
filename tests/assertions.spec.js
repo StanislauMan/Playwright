@@ -1,5 +1,4 @@
 const { test, expect } = require('@playwright/test')
-const exp = require('constants')
 
 test ('Assertions', async ({ page }) => {
 
@@ -60,5 +59,5 @@ test ('Assertions', async ({ page }) => {
     const headMenu = await page.locator('.header-menu ul')
 
     await expect(headMenu).toHaveCount(8)
-      
+
 })
