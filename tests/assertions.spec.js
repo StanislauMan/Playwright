@@ -61,3 +61,12 @@ test ('Assertions', async ({ page }) => {
     await expect(headMenu).toHaveCount(8)
 
 })
+
+test('Soft assertions', async({ page }) => {
+
+    await page.goto('https://demo.nopcommerce.com/')
+
+    await expect(page).toHaveURL('https://demo.nopcommerce.com/')
+    await expect.soft(page) .toHaveTitle('Faild test!!!')
+    await expect(page.locator('.header-logo')).toBeVisible()
+})
