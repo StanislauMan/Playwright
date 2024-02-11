@@ -8,6 +8,8 @@ test('Checkboxes testing', async ({ page }) => {
 
     for (let locator of checkboxesLocator){
         await page.locator(locator).check()
+        
+        await expect(await page.locator(locator)).toBeChecked()
     }
 
     await page.waitForTimeout(3000)
@@ -15,6 +17,8 @@ test('Checkboxes testing', async ({ page }) => {
     for (let locators of checkboxesLocator){
         if(await page.locator(locators).isChecked()){
             await page.locator(locators).uncheck()
+
+            await expect(await page.locator(locators)).not.toBeChecked()
         }
     }
 
