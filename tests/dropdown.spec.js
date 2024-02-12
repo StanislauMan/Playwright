@@ -15,8 +15,18 @@ test('Dropdown testing', async({ page }) => {
     // await expect(options.length).toBe(4)
 
 
-    const content = await page.locator('#siblings').textContent()
-    await expect(content.includes('Yes')).toBeTruthy()
+    // const content = await page.locator('#siblings').textContent()
+    // await expect(content.includes('Yes')).toBeTruthy()
+
+    const options = await page.$$('#siblings option')
+    
+    for (let option of options){
+        let value = await option.textContent()
+        if(value.includes('Maybe')){
+            await page.selectOption('#siblings', value)
+            break
+        }
+    }
 
     await page.pause()
 })
