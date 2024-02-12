@@ -5,6 +5,7 @@ test('Dropdown testing', async({ page }) => {
     await page.goto('https://practice-automation.com/form-fields/')
 
     await page.locator('#siblings').selectOption('No') 
+    // await page.locator('#siblings').selectOption({value: 'no'})
 
     // const options = await page.locator('#siblings option')
     // await expect(options).toHaveCount(4)
@@ -28,14 +29,13 @@ test('Dropdown testing', async({ page }) => {
         }
     }
 
-    await page.pause()
 })
 
-// test('Another fropdown', async({ page }) => {
 
-//     await page.goto('https://testautomationpractice.blogspot.com/')
+test.only('Multi-select dropdown', async({ page }) => {
 
-//     await page.locator('#country').selectOption({label: 'Canada'})
+    await page.goto('https://testautomationpractice.blogspot.com/')
 
-//     await page.pause()
-// })
+    await page.locator('#colors').selectOption(['Blue', 'Green', 'White'])
+
+})
