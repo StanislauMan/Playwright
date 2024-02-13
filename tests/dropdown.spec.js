@@ -32,7 +32,7 @@ test('Dropdown testing', async({ page }) => {
 })
 
 
-test.only('Multi-select dropdown', async({ page }) => {
+test('Multi-select dropdown', async({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 
