@@ -1,5 +1,4 @@
 const { test, expect } = require('@playwright/test')
-const { connect } = require('http2')
 
 test('Tables testing', async ({ page }) => {
 
