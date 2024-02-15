@@ -8,20 +8,12 @@ test ('Data picker testing', async ({ page }) => {
     const dateResult = await page.locator('.field-value')
     const submitBtn = await page.getByRole('button', { name: 'Submit' })
 
-    await dateField.fill('2024-03-10', {timeout: 1000})
-    await page.pause()
+    await dateField.fill('2024-03-10')
 
-    await page.keyboard.press('Enter')
-    await page.pause()
+    await submitBtn.press('Enter')
 
-    //await submitBtn.click()
-
-    //await page.waitForSelector('.field-value')
+    await page.waitForSelector('.field-value')
 
     await expect(dateResult).toHaveText('2024-03-10')
-
-    await page.pause()
-
-
 
 })
