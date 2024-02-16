@@ -1,5 +1,4 @@
 const { test, expect } = require('@playwright/test')
-const { waitForDebugger } = require('inspector')
 
 test.describe('Mouse action testing', () => {
 
@@ -50,11 +49,15 @@ test.describe('Mouse action testing', () => {
 
         await expect(dropBox).toHaveText('Drop here')
 
-        await dragItem.hover()
-        await page.mouse.down()
+        //approach 1
+        // await dragItem.hover()
+        // await page.mouse.down()
 
-        await dropBox.hover()
-        await page.mouse.up()
+        // await dropBox.hover()
+        // await page.mouse.up()
+
+        //approach 2
+        await dragItem.dragTo(dropBox)
 
         await expect(dropBox).toHaveText('Dropped!')
     })
