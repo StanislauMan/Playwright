@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test')
+const exp = require('constants')
 
 let userId
 
@@ -29,7 +30,7 @@ test('Create an user', async ({ request }) => {
     console.log(await userId)
 })
 
-test.only('Update the user', async({ request }) => {
+test('Update the user', async({ request }) => {
 
     const response = await request.put(`https://reqres.in/api/users/${userId}`, {
         data: {
@@ -47,4 +48,22 @@ test.only('Update the user', async({ request }) => {
     await expect(response.status()).toEqual(200)
     await expect(responseBody.name).toEqual('Test_User_UPD')
     await expect(responseBody.job).toEqual('Engineer')
+})
+
+test('Delete the user', async({ request }) => {
+
+    const response = await request.delete(`https://reqres.in/api/users/${userId}`)
+
+    console.log(await response.status())
+
+    await expect(response.status()).toEqual(204)
+})
+
+test('Get the deleted user by id', async({ request }) => {
+
+    const response = await request.get('https://reqres.in/api/users/${userId}')
+
+    console.log(await response.status())
+
+    await expect(response.status()).toEqual(404)
 })
